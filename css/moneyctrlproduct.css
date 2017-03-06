@@ -1,0 +1,134 @@
+/*标题栏*/
+.pro_title h2{
+    color: #565452;
+    text-indent: 0.5rem;
+    padding: 10px 0;
+}
+.pro_title p{
+    color: #AFAFAF;
+    text-indent: 0.5rem;
+    padding-bottom: 10px;
+}
+/*详情信息*/
+.pro_detail i{
+    display: block;
+    float: right;
+    width: 160px;
+    height: 160px;
+}
+.pro_detail i img{
+    /*box-sizing: content-box;*/
+    width: 100%;
+    height: 100%;
+}
+.pro_detail p{
+    font-size: 16px;
+    padding: 0 .5rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+/*供货地址*/
+.supply{
+    text-align: center;
+    padding-top: 10px;
+}
+.supply ul{
+    margin: 0 120px;
+    border: 1px solid #F0F0F0;
+    box-shadow: 2px 0 2px 2px #F0F0F0;
+}
+.supply li{
+    border-bottom: 1px dashed #F0F0F0;
+    margin: 0 10px;
+    line-height: 20px;
+}
+.supply li a,a>span{
+    display: block;
+    width: 100%;
+}
+.supply li a span{
+    padding-left: 10px;
+    text-align: left;
+}
+.supply li a span strong{
+    color: #FF841D;
+    float: right;
+    padding-right: 20px;
+}
+.supply button{
+    width: 80%;
+    height: 30px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #FF841D;
+    border: none;
+    border-radius: 5px;
+    margin: 24px 0;
+}
+.ewm{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+.ewm img{
+    width: 94%;
+}
+.cu-content-pl .tit{
+    font-size: 14px;
+    text-indent: 1rem;
+}
+.cu-content-pl .reply{
+    width: 94%;
+    height: 120px;
+    margin: 10px auto;
+    border: 2px solid #F0F0F0;
+}
+.reply .form{
+    height: 100%;
+}
+.reply .form textarea{
+    resize: none;
+    height: 70%;
+    width: 100%;
+}
+.reply .ctrl{
+    height: 30%;
+    background-color: #FBFBFB;
+    border-top: 1px solid #F0F0F0;
+}
+.reply .ctrl input{
+    float: right;
+    width: 80px;
+    height: 100%;
+    background-color: #FF841D;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+}
+.list ul{
+    margin: 30px 30px 0;
+}
+.list ul li{
+    height: 80px;
+}
+.list ul li .userimg img{
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.list ul li .con .name{
+    overflow: hidden;
+    padding: 0 10px;
+}
+.list ul li .con .username{
+    float: left;
+    color: #5E9AC2;
+}
+.list ul li .con .time{
+    float: right;
+}
+.list ul li .con .content{
+    padding-left: 60px;
+    padding-top: 10px;
+}

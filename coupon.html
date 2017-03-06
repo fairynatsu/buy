@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>coupon 第10页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/coupon.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <div><a href="index.html" class='san'></a></div>
+    <h1>优惠券</h1>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--优惠券-->
+<div class="coupon"></div>
+<!--三级菜单栏-->
+<div class="nav clearfix">
+    <h3>
+        <a href='index.html'>首页</a>&nbsp;&gt;&nbsp;
+        <a href='#'>优惠券</a>
+    </h3>
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script type='text/html' id='coupon'>
+    {{each result as value}}
+        <a href='{{value.couponLink}}?{{value.couponId}}'>
+            <img src="{{value.couponImg}}" alt="">
+            <p>{{value.couponTitle}}</p>
+        </a>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getcoupon',
+            dataType : 'json',
+            success : function (result) {
+                var html = template( 'coupon', result );
+                $('.coupon').html( html );
+            }
+        })
+    })
+</script>
+</html>

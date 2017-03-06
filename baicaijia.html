@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>baicaijia 第9页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/baicaijia.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <div><a href="index.html" class='san'></a></div>
+    <h1>白菜价-淘宝内部券</h1>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--顶部导航栏-->
+<div class="nav clearfix">
+    <ul class='nav_ul'></ul>
+</div>
+<!--对应商品列表-->
+<div class="info"></div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script src="js/common.js"></script>
+<script type='text/html' id='nav'>
+    {{if result}}
+        {{each result as value}}
+            <li><a href="#">{{value.title}}</a></li>
+        {{/each}}
+    {{/if}}
+</script>
+<script type='text/html' id='info'>
+    {{if result}}
+        {{each result as value}}
+            <div class="detail clearfix">
+                <div class="img">{{#value.productImg}}</div>
+                <div class="text">
+                    <div class="productName">{{#value.productName}}</div>
+                    <div class="productPrice">{{#value.productPrice}}</div>
+                    <div class="productCouponRemain">{{#value.productCouponRemain}}</div>
+                    <div class="box">
+                        <div class="productCoupon fl">{{#value.productCoupon}}</div>
+                        <div class="productHref fr">{{#value.productHref}}</div>
+                    </div>
+                </div>
+            </div>
+    {{/each}}
+    {{/if}}
+</script>
+<script>
+    $(function () {
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getbaicaijiatitle',
+            dataType : 'json',
+            success : function (result) {
+                var html = template('nav',result);
+                $('.nav>ul').html(html);
+
+                $.ajax({
+                    type : 'get',
+                    url : 'http://127.0.0.1:3000/api/getbaicaijiaproduct',
+                    dataType : 'json',
+                    data : {titleid : 0},
+                    success : function (result) {
+                        var html = template('info', result);
+                        $('.info').html(html);
+                    }
+                });
+
+                var parentBox = document.querySelector('.nav');
+                var parentWidth = parentBox.offsetWidth;
+                var childBox = document.querySelector('.nav_ul');
+                var childLi = childBox.querySelectorAll('li');
+                var childLiWidth = 0;
+                /*循环获取每一个li标签的宽度*/
+                for (var i = 0; i < childLi.length; i++){
+                    childLiWidth += (childLi[i].offsetWidth);
+                }
+                /*动态给ul标签设定宽度*/
+                childBox.style.width = childLiWidth + 'px';
+                /*默认选中‘全部’菜单下内容*/
+                $('.nav_ul>li:first-child').addClass('active');
+
+                var maxX = 0;
+                var minX = parentWidth - childLiWidth;
+                /*translateY 最大滑动定位*/
+                var maxSwipe = maxX + 100;
+                /*translateY 最小滑动定位*/
+                var minSwipe = minX - 100;
+                var startX = 0;
+                var moveX = 0;
+                var distanceX = 0;
+                /*记录当前的定位 全局  相当于轮播图当中的index*/
+                var currX = 0;
+                /*定义公用的方法*/
+                var addTransition = function(){
+                    childBox.style.webkitTransition = "all .2s";
+                    childBox.style.transition = "all .2s";
+                }
+                var removeTransition = function(){
+                    childBox.style.webkitTransition = "none";
+                    childBox.style.transition = "none";
+                }
+                var setTranslateX = function(x){
+                    childBox.style.webkitTransform = "translateX("+x+"px)";
+                    childBox.style.transform = "translateX("+x+"px)";
+                }
+
+                window.addEventListener('touchstart',function (e) {
+                    startX = e.touches[0].clientX;
+                });
+                window.addEventListener('touchmove',function (e) {
+                    moveX = e.touches[0].clientX;
+                    distanceX = moveX - startX;/*清除过度*/
+                    removeTransition();
+                    if ((currX + distanceX) < maxSwipe && (currX + distanceX) > minSwipe) {
+                        setTranslateX(currX + distanceX);
+                    }
+                });
+                window.addEventListener('touchend',function (e) {
+                    if(( currX + distanceX)>maxX){
+                        currX = maxX;
+                        addTransition();
+                        setTranslateX(currX);
+                    }
+                    /*当往上滑的时候 小于 最小定位*/
+                    else if(( currX + distanceX)<minX){
+                        currX = minX;
+                        addTransition();
+                        setTranslateX(currX);
+                    }
+                    else{
+                        /*记录当前的定位   上一次当前的定位 + 这一次改变的定位*/
+                        currX = currX + distanceX;
+                    }
+
+                    /*重置所有的参数  不重置currY */
+                    startX = 0;
+                    moveX =0;
+                    distanceX = 0;
+                });
+
+                /*点击事件*/
+                itcast.tap(childBox,function(e) {
+                    /*找到事件触发源 然后找到点击的那个li元素*/
+                    /*console.log(e.target.parentNode);*/
+                    var li = e.target.parentNode;
+                    for (var i = 0; i < childLi.length; i++) {
+                        childLi[i].className = " ";
+                        /*设置索引*/
+                        childLi[i].index = i;
+                    }
+                    /*点击菜单的时候  改变当前的样式*/
+                    li.className = "active";
+                    var childLiW = 0;
+                    for (var j = 0; j < li.index; j++){
+                        childLiW += (childLi[j].offsetWidth);
+                    }
+                    var translateX = -childLiW;/*通过索引来计算*/
+                    /*判断当前的定位要大于  定位区间的  最小定位*/
+                    if(translateX > minX){
+                        currX = translateX;
+                        addTransition();
+                        setTranslateX(currX);
+                    }
+                    else{
+                        currX = minX;
+                        addTransition();
+                        setTranslateX(currX);
+                    }
+                    /*根据点击li标签选择对应商品列表渲染*/
+                    $.ajax({
+                        type : 'get',
+                        url : 'http://127.0.0.1:3000/api/getbaicaijiaproduct',
+                        dataType : 'json',
+                        data : {titleid : li.index},
+                        success : function (result) {
+                            var html = template('info', result);
+                            $('.info').html(html);
+                        }
+                    });
+                })
+            }
+        })
+
+
+    })
+</script>
+</html>

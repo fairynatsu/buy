@@ -1,0 +1,354 @@
+/*
+*,
+::before,
+::after{
+    padding: 0;
+    margin: 0;
+
+    //在移动端特殊的设置
+    //清除点击高亮效果
+    -webkit-tap-highlight-color: transparent;
+}
+input,textarea{
+    border: none;
+    outline: none;
+    !*特殊的属性定义  清除浏览器给input自带的样式*!
+    -webkit-appearance: none;!*组件默认的样式空*!
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+a:hover{
+    color: #333;
+}
+ul li{
+    list-style: none;
+}
+!*清除浮动*!
+.f_left{
+    float: left;
+}
+.f_right{
+    float: right;
+}
+.clearfix::after,
+.clearfix::before{
+    content: ".";
+    line-height: 0;
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+!*顶部通栏*!
+.mmm_header{
+    width: 100%;
+    height: 50px;
+    background-color: #FF841D;
+}
+.header_logo{
+    width: 185px;
+    height: 25px;
+    padding-top: 12px;
+    padding-left: 10px;
+    float: left;
+}
+.header_app{
+    width: 34px;
+    height: 34px;
+    padding-top: 8px;
+    padding-right: 6px;
+    float: right;
+}
+.mmm_search{
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #FF841D;
+}
+!*顶部搜索栏*!
+.ms_txt{
+    width: 280px;
+    height: 28px;
+    margin-top: 8px;
+    margin-left: 12px;
+    background-color: #f1f1f1;
+    border-radius: 28px;
+    float: left;
+}
+.ms_btn{
+    width: 60px;
+    height: 30px;
+    background-color: #FF841D;
+    border-radius: 30px;
+    color: #fff;
+    float: right;
+    margin-top: 6px;
+    margin-right: 8px;
+}
+!*底部*!
+.mmm_foot{
+    background-color: #f1f1f1;
+    width: 100%;
+}
+.mmm_foot ul li{
+    list-style: none;
+    float: left;
+    border: 1px solid #E0E0E0;
+    border-left: none;
+    width: 33%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin: 26px 0;
+}
+.mmm_foot ul li a{
+    color: #8C8D8E;
+    font: 14px 'microsoft Yahei';
+}
+.mmm_foot p{
+    color: #3c3c3c;
+    font: 14px 'microsoft Yahei';
+    text-align: center;
+    margin-bottom: 5px;
+}
+.mmm_foot .mf_app{
+    color: red;
+}
+.mmm_foot .mf_phone{
+    color: #181818;
+}
+*/
+@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+    html,body {
+        font-size:33.75px;
+    }
+}
+@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
+    html,body {
+        font-size:30px;
+    }
+}
+@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
+    html,body {
+        font-size:25px;
+    }
+}
+@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+    html,body {
+        font-size:22.5px;
+    }
+}
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+    html,body {
+        font-size:20px;
+    }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+    html,body {
+        font-size:18.75px;
+    }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+    html,body {
+        font-size:16.875px;
+    }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+    html,body {
+        font-size:15px;
+    }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+    html,body {
+        font-size:12.9375px;
+    }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+    html,body {
+        font-size:12.5px;
+    }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+    html,body {
+        font-size:11.71875px;
+    }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+    html,body {
+        font-size:11.25px;
+    }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+    html,body {
+        font-size:10px;
+    }
+}
+@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+    html,body {
+        font-size:7.5px;
+    }
+}
+*,
+::before,
+::after{
+    padding: 0;
+    margin: 0;
+
+    /*在移动端特殊的设置*/
+    /*清除点击高亮效果*/
+    -webkit-tap-highlight-color: transparent;
+}
+input,textarea{
+    border: none;
+    outline: none;
+    /*特殊的属性定义  清除浏览器给input自带的样式*/
+    -webkit-appearance: none;/*组件默认的样式空*/
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+a:hover{
+    color: #333;
+}
+ul li{
+    list-style: none;
+}
+/*清除浮动*/
+.fl{
+    float: left;
+}
+.f_right{
+    float: right;
+}
+.clearfix::after,
+.clearfix::before{
+    content: ".";
+    line-height: 0;
+    height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+/*顶部通栏*/
+.mmm_header{
+    width: 100%;
+    height: 4rem;
+    background-color: #FF841D;
+}
+.header_logo{
+    width: 10rem;
+    height: 1.6rem;
+    padding-top: 1rem;
+    padding-left: 0.8rem;
+    float: left;
+}
+.header_app{
+    width: 2.4rem;
+    height: 2.4rem;
+    padding-top: 0.6rem;
+    padding-right: 0.8rem;
+    float: right;
+}
+.mmm_search{
+    box-sizing: border-box;
+    width: 100%;
+    height: 3.4rem;
+    border: 1px solid #FF841D;
+}
+/*顶部搜索栏*/
+.ms_txt{
+    width: 75%;
+    height: 2.2rem;
+    margin-top: 0.5rem;
+    margin-left: 0.8rem;
+    background-color: #f1f1f1;
+    border-radius: 28px;
+    float: left;
+}
+.ms_btn{
+    width: 5rem;
+    height: 2.2rem;
+    background-color: #FF841D;
+    border-radius: 30px;
+    color: #fff;
+    float: right;
+    margin-top: 0.4rem;
+    margin-right: 0.5rem;
+}
+/*底部*/
+.mmm_foot{
+    background-color: #f1f1f1;
+    width: 100%;
+}
+.mmm_foot ul li{
+    list-style: none;
+    float: left;
+    border: 1px solid #E0E0E0;
+    border-left: none;
+    width: 33%;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+    margin: 1.3rem 0;
+}
+.mmm_foot ul li a{
+    color: #8C8D8E;
+    font: 0.8rem 'microsoft Yahei';
+}
+.mmm_foot p{
+    color: #3c3c3c;
+    font: 0.8rem 'microsoft Yahei';
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+.mmm_foot .mf_app{
+    color: red;
+}
+.mmm_foot .mf_phone{
+    color: #181818;
+}
+
+/*分页面顶部通栏*/
+.header{
+    background-color: #FF841D;
+    width: 100%;
+    height: 4rem;
+    position: relative;
+}
+.header .san{
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    left: 0.6rem;
+    top: 0.6rem;
+}
+.header .san::before{
+    content: '';
+    border: 10px solid #fff;
+    border-color: transparent #fff transparent transparent;
+    position: absolute;
+    left: 0.1rem;
+    top: 0.3rem;
+}
+.header .san::after{
+    content: '';
+    border: 10px solid #fff;
+    border-color: transparent #FF841D transparent transparent;
+    position: absolute;
+    left: 0.2rem;
+    top: 0.3rem;
+}
+.header h1{
+    color: #fff;
+    line-height: 4rem;
+    text-align: center;
+}
+.header .header_app {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}

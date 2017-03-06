@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>couponproduct 第11页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/couponproduct.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <div><a href="coupon.html" class='san'></a></div>
+    <h1 class='tit'></h1>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--提示-->
+<p class='hint'>--点餐前出示手机中的优惠券，即可享受优惠--</p>
+<!--优惠券列表-->
+<div class="couponlist"></div>
+<!--弹窗-->
+<div class="popup">
+    <div class="popin">
+        <ul class="slides clearfix"></ul>
+    </div>
+    <div class="arr"><span class="left">&lt;</span><span class="right">&gt;</span>
+    </div>
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script type="text/html" id ="couponlist">
+    {{each result as value}}
+        <div class='cdetail clearfix'>
+            <div class='coupon_list'>
+                <i>{{#value.couponProductImg}}</i>
+            </div>
+            <div class="coupon_txt">
+                <span>{{value.couponProductName}}</span>
+                <p>{{value.couponProductPrice}}</p>
+                <a href="#" class='san'></a>
+            </div>
+            <p class="price">{{value.couponProductTime}}</p>
+        </div>
+    {{/each}}
+</script>
+<script type="text/html" id ="slides">
+    {{each result as value}}
+        <li>{{#value.couponProductImg}}</li>
+    {{/each}}
+</script>
+<script>
+
+    var sel = location.search;
+    var seid = +sel.slice(1);
+
+
+    $.ajax({
+        type : 'get',
+        url : 'http://127.0.0.1:3000/api/getcouponproduct',
+        dataType : 'json',
+        data : {couponid : seid},
+        success : function (result) {
+            var html = template( 'couponlist', result );
+            $('.couponlist').html( html );
+
+            $.ajax({
+                type : 'get',
+                url : 'http://127.0.0.1:3000/api/getcoupon',
+                dataType : 'json',
+                success : function (result) {
+                    var tt = result.result[seid].couponTitle;
+                    $('.tit').html(tt+'优惠券');
+                }
+            })
+
+            $.ajax({
+                type : 'get',
+                url : 'http://127.0.0.1:3000/api/getcouponproduct',
+                dataType : 'json',
+                data : {couponid : seid},
+                success : function (result) {
+                    var html = template( 'slides', result );
+                    $('.slides').html( html );
+
+                    var pic = 0;
+                    /*获取当前查看图片序号 改变轮播图当前显示图片*/
+                    $('.cdetail').on('click',function () {
+                        pic = $(this).index();
+                        $('.popin>ul').css({
+                            transform : 'translateX('+ -pic * 200 + 'px)'
+                        })
+                    });
+                    /*阻止冒泡函数*/
+                    function stopBubble(e) {
+                        if(e && e.stopPropagation){
+                            e.stopPropagation();
+                        }else{
+                            window.event.cancelBubble = true;
+                        }
+                    }
+                    /*点击图片显示遮罩*/
+                    $('.coupon_list>i').on('click',function (){
+                        $('.popup').show();
+                    });
+
+                    /*点击遮罩关闭*/
+                    $('.popup').on('click',function (){
+                        $('.popup').hide();
+                    });
+
+                    var popin = document.querySelector('.popin');
+                    var ul = $(popin).find('ul')[0];
+                    var lis = $(popin).find('li');
+                    var left = document.getElementsByClassName("left")[0];
+                    var right = document.getElementsByClassName("right")[0];
+                    /*向右轮播图*/
+                    $(right).on('click',function () {
+                        stopBubble($('right'));
+                        if (pic === lis.length - 1) {
+                            return;
+                        }
+                        pic ++;
+                        $('.popin>ul').css({
+                            transition : 'all 1s',
+                            transform : 'translateX('+ -pic * 200 + 'px)'
+                        })
+                    })
+                    /*向左轮播图*/
+                    $(left).on('click',function () {
+                        stopBubble($('left'));
+                        if (pic === 0) {
+                            return;
+                        }
+                        pic--;
+                        $('.popin>ul').css({
+                            transition : 'all 1s',
+                            transform : 'translateX('+ -pic * 200 + 'px)'
+                        })
+                    })
+                }
+            });
+        }
+    })
+</script>
+</html>

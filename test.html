@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>category</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+
+<!--顶部通栏-->
+<div class="mmm_header">
+    <img class="header_logo" src="images/header_logo.png" alt="">
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--顶部搜索栏-->
+<div class="mmm_search">
+    <input class="ms_txt" type="text" placeholder="请输入你想比价的商品">
+    <input class="ms_btn" type="button" value="搜索">
+</div>
+<!--商品分类-->
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"></div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/html" id ="category">
+    {{each result as value i}}
+    <div class="panel panel-default category">
+        <div class="panel-heading" role="tab" id="heading{{i}}">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{i}}"
+                   aria-expanded="true" aria-controls="collapse{{i}}">
+                    <h3>{{value.title}} <i class='san'></i></h3>
+                </a>
+            </h4>
+        </div>
+        <div id="collapse{{i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{i}}">
+            <ul class="panel-body clearfix"></ul>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script type="text/html" id ="category1">
+    {{each result as value}}
+        <li>
+            <a href="#">{{value.category}}</a>
+        </li>
+    {{/each}}
+</script>
+<script>
+    $.ajax({
+        type : 'get',
+        url : 'http://192.168.23.28:3000/api/getcategorytitle',
+        dataType : 'json',
+        success : function (result) {
+            var html = template( 'category', result );
+            $('.panel-group').html( html );
+            console.log($('.panel-body:nth-last-of-type(-n+7)'));
+
+            $('.panel>.panel-collapse>ul').each(function (i,v) {
+                $.ajax({
+                    type : 'get',
+                    url : 'http://192.168.23.28:3000/api/getcategory?titleid='+result.result[i].titleId,
+                    success : function (result) {
+                        var html = template('category1', result);
+                        v.innerHTML = html;
+                    }
+                })
+            })
+        }
+    })
+
+</script>
+</html>

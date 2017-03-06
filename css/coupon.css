@@ -1,0 +1,45 @@
+/*顶部通栏*/
+.header{
+    background-color: #F4483E;
+}
+.header .san::after{
+    content: '';
+    border: 10px solid #fff;
+    border-color: transparent #F4483E transparent transparent;
+    position: absolute;
+    left: 0.2rem;
+    top: 0.3rem;
+}
+/*三级菜单栏*/
+.nav{
+    background-color: #F0F0F0;
+    margin: 20px 0;
+}
+.nav h3{
+    text-decoration: none;
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+    text-indent: 0.7rem;
+    float: left;
+}
+.nav h3 a{
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+}
+/*优惠券*/
+.coupon{
+    padding: 10px;
+}
+.coupon a{
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    width: 32%;
+    height: 100px;
+    text-align: center;
+    margin: 5px 0;
+}
+.coupon a img{
+    width: 50%;
+    margin-top: 10px;
+}

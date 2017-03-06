@@ -1,0 +1,252 @@
+/*
+
+!*菜单栏*!
+.mmm_menu{
+    border-top: 5px solid #f1f1f1;
+}
+.mmm_menu ul li{
+    list-style: none;
+    float: left;
+    width: 25%;
+    text-align: center;
+    margin-top: 12px;
+}
+.mmm_menu ul li a{
+    display: block;
+}
+.mmm_menu ul li img{
+    width: 50px;
+    height: 50px;
+}
+.mmm_menu span{
+    color: #333;
+    font: 14px 'microsoft Yahei';
+    display: block;
+    height: 30px;
+}
+!*超值折扣推荐*!
+.msh_header{
+    border-top: 5px solid #f1f1f1;
+    width: 100%;
+    height: 30px;
+    background-color: #FF9B19;
+}
+.msh_header span{
+    color: #fff;
+    font: 18px 'microsoft Yahei';
+    line-height: 30px;
+    margin-left: 5px;
+}
+.msh_header img{
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.mmm_show .info_box{
+    padding: 10px;
+    font: 16px 'Microsoft YaHei';
+    border-bottom: 1px solid #f1f1f1;
+}
+.mmm_show .info_box a{
+    width: 90px;
+    height: 100px;
+    float: left;
+}
+.mmm_show .info_box i{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.mmm_show .info_box img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.mmm_show .info_box .mg_txt{
+    overflow: hidden;
+    padding: 0 10px;
+}
+.mg_txt p{
+    color: #333;
+}
+.mg_txt .price{
+    color: #FF7105;
+}
+.mg_txt .time{
+    display: inline-block;
+    margin-top: 20px;
+    color: #333;
+    font-size: 14px;
+}
+!*更多优惠*!
+.m_offer .offer{
+    width: 360px;
+    height: 30px;
+    background-color: #FAFAFA;
+    margin: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+}*/
+@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+    html,body {
+        font-size:33.75px;
+    }
+}
+@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
+    html,body {
+        font-size:30px;
+    }
+}
+@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
+    html,body {
+        font-size:25px;
+    }
+}
+@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+    html,body {
+        font-size:22.5px;
+    }
+}
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+    html,body {
+        font-size:20px;
+    }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+    html,body {
+        font-size:18.75px;
+    }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+    html,body {
+        font-size:16.875px;
+    }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+    html,body {
+        font-size:15px;
+    }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+    html,body {
+        font-size:12.9375px;
+    }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+    html,body {
+        font-size:12.5px;
+    }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+    html,body {
+        font-size:11.71875px;
+    }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+    html,body {
+        font-size:11.25px;
+    }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+    html,body {
+        font-size:10px;
+    }
+}
+@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+    html,body {
+        font-size:7.5px;
+    }
+}
+
+/*菜单栏*/
+.mmm_menu{
+    border-top: 5px solid #f1f1f1;
+}
+.mmm_menu ul li{
+    list-style: none;
+    float: left;
+    width: 25%;
+    text-align: center;
+    margin-top: 0.6rem;
+}
+.mmm_menu ul li a{
+    display: block;
+}
+.mmm_menu ul li img{
+    width: 2.8rem;
+    height: 2.8rem;
+}
+.mmm_menu span{
+    color: #333;
+    font: 0.8rem 'microsoft Yahei';
+    display: block;
+    height: 2rem;
+}
+/*超值折扣推荐*/
+.msh_header{
+    border-top: 5px solid #f1f1f1;
+    width: 100%;
+    height: 2rem;
+    background-color: #FF9B19;
+}
+.msh_header span{
+    color: #fff;
+    font: 1rem 'microsoft Yahei';
+    line-height: 2rem;
+    margin-left: 0.25rem;
+}
+.msh_header img{
+    float: right;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.25rem;
+    margin-right: 0.25rem;
+}
+.mmm_show .info_box{
+    display: block;
+    padding: 0.5rem;
+    font: 1.2rem 'Microsoft YaHei';
+    border-bottom: 1px solid #f1f1f1;
+}
+.mmm_show .info_box .info_img{
+    width: 4.5rem;
+    height: 5rem;
+    float: left;
+}
+.mmm_show .info_box i{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.mmm_show .info_box img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.mmm_show .info_box .mg_txt{
+    overflow: hidden;
+    padding: 0 0.5rem;
+}
+.mg_txt p{
+    color: #333;
+}
+.mg_txt .price{
+    color: #FF7105;
+}
+.mg_txt .time{
+    display: inline-block;
+    margin-top: 1rem;
+    color: #333;
+    font-size: 1.1rem;
+}
+/*更多优惠*/
+.m_offer .offer{
+    width: 96%;
+    height: 1.8rem;
+    background-color: #FAFAFA;
+    margin: 0.5rem;
+    border: 1px solid #E0E0E0;
+    border-radius: 5px;
+}

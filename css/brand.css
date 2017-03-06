@@ -1,0 +1,148 @@
+/*三级菜单栏*/
+.nav{
+    background-color: #F7F7F7;
+    margin: 10px 0;
+    border: 1px solid #F0F0F0;
+}
+.nav h3{
+    text-decoration: none;
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+    text-indent: 0.7rem;
+    float: left;
+}
+.nav h3 a{
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+}
+/*总标题*/
+.host{
+    width: 99%;
+    line-height: 30px;
+    text-indent: 1rem;
+    font-size: 14px;
+    color: #935A20;
+    border: 1px solid #DDDDDD;
+    margin: 10px 0 ;
+    background-color: #EEEEEE;
+}
+/*商品分类*/
+.category{
+    width: 100%;
+}
+.category>li{
+    width: 100%;
+    color: #050005;
+    height: 38px;
+    border-bottom: 1px solid #DADADA;
+    text-indent: 10px;
+    padding: 6px 0;
+}
+.category>li a{
+    display: block;
+}
+.category>li span{
+    margin-left: 1rem;
+    float: left;
+    width: 5px;
+    height: 20px;
+    padding-right: 20px;
+    line-height: 20px;
+    color: #fff;
+    background-color: #C9C9C9;
+}
+.category>li:nth-child(1) span{
+    background-color: #F00000;
+}
+.category>li:nth-child(2) span{
+    background-color: #FF9314;
+}
+.category>li:nth-child(3) span{
+    background-color: #8ADF5B;
+}
+.category>li h3{
+    float: left;
+    font:  normal 16px 'Microsoft YaHei';
+}
+.category>li p{
+    float: left;
+    width: 80%;
+    padding: 5px 0 5px 35px;
+}
+.category>li i{
+    float: right;
+    padding-right: 20px;
+    font-size: 16px;
+}
+/*商品列表*/
+.goodList{
+    padding: 0.5rem;
+    border-bottom: 1px solid #f1f1f1;
+}
+.goodList a{
+    display: block;
+    font: 1.2rem 'Microsoft YaHei';
+    border-bottom: 1px solid #f1f1f1;
+    padding-top: 0.7rem;
+    padding-bottom: 0.25rem;
+}
+.goodList .mon_img,.goodList i{
+    width: 4.8rem;
+    height: 4.8rem;
+    float: left;
+}
+.mon_img img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.mon_txt{
+    overflow: hidden;
+    padding: 0 0.8rem;
+}
+.mon_txt p{
+    color: #333;
+}
+.mon_txt .price{
+    color: #FF841D;
+}
+a .mon_txt .comment{
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #DEDEDE;
+    font-size: 1rem;
+}
+.mon_txt .star{
+    color: #FF9000;
+    float: right;
+}
+/*最新评论*/
+.com{
+    padding: 0.8rem 0.5rem;
+    font: 1.2rem 'Microsoft YaHei';
+}
+.com .mon_img,.com i{
+    width: 4.8rem;
+    height: 4.8rem;
+    float: left;
+}
+.dir>div{
+    background-color: #F8F8F8;
+    margin: 10px;
+    border: 1px solid #EBEBEB;
+}
+.dir span{
+    padding-left: 10px;
+    display: inline-block;
+    margin: 10px 0;
+}
+.dir .star{
+    color: #FF9000;
+}
+.dir .time{
+    float: right;
+    padding-right: 10px;
+}
+.dir p{
+    padding: 10px;
+}

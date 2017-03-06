@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail 第4页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/detail.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="mmm_header">
+    <img class="header_logo" src="images/header_logo.png" alt="">
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--顶部搜索栏-->
+<div class="mmm_search">
+    <input class="ms_txt" type="text" placeholder="请输入你想比价的商品">
+    <input class="ms_btn" type="button" value="搜索">
+</div>
+<!--三级菜单栏-->
+<div class="nav clearfix"></div>
+<!--商品详情-->
+<div class="info_neil clearfix"></div>
+<!--操作栏-->
+<ul class="actionBar">
+    <li><a href="#">比价购买</a></li>
+    <li><a href="#">产品参数</a></li>
+    <li><a href="#">评价（2322）</a></li>
+</ul>
+<!--购买-->
+<div class="pricing"></div>
+<div class="promise">
+    <p>*实际价格一各网站列出的实时售价为准，我们提供的价格可能有数小时至数日的延迟。</p>
+</div>
+<!--评价-->
+<div class="appraise">
+    <h3>网友评价</h3>
+
+</div>
+<button class='smor'>查看更多评价</button>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<!--获取标题栏-->
+<script type='text/html' id='title'>
+    {{if result}}
+        {{each result as value}}
+            <h3>
+                <a href='index.html'>首页</a>&nbsp;&gt;<i></i>
+                <a href='#'>{{value.productName.split(' ')[0]}}</a>&nbsp;&gt;&nbsp;
+            </h3>
+            <input class='n_btn' type="button" value="筛选">
+        {{/each}}
+    {{/if}}
+</script>
+<script type='text/html' id='m_title'>
+    {{if result}}
+        {{each result as value}}
+            <a href="television.html?{{value.categoryId}}">{{value.category}}</a>&nbsp;&gt;&nbsp;
+        {{/each}}
+    {{/if}}
+</script>
+<!--获取图片详情-->
+<script type='text/html' id='info_neil'>
+    {{if result}}
+        {{each result as value}}
+            <h1>{{value.productName}}</h1>
+            <i>{{#value.productImg}}</i>
+            <button class='collect'>收藏</button>
+        {{/each}}
+    {{/if}}
+</script>
+<!--获取价格表-->
+<script type='text/html' id='pricing'>
+    {{if result}}
+        {{each result as value}}
+            <div>{{#value.bjShop}}</div>
+        {{/each}}
+    {{/if}}
+</script>
+<!--获取评论-->
+<script type='text/html' id='appraise'>
+    {{if result}}
+        {{each result as value}}
+            <div class="title clearfix">
+                <span>{{value.comName}}</span>
+                <span class='date'>{{value.comTime}}</span><br>
+                <span class='from'>{{value.comFrom}}</span>
+            </div>
+            <p class='info'>{{value.comContent}}</p>
+        {{/each}}
+    {{/if}}
+</script>
+<script>
+
+    $(function () {
+
+        var sele = location.search;
+        var seid = +sele.slice(1);
+        /*获取标题栏*/
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getproduct',
+            data : {productid : seid},
+            dataType : 'json',
+            success : function (data) {
+                var html = template( 'title', data );
+                $('.nav').html( html );
+
+                console.log(data.result);
+                var categoryId = data.result[0].categoryId;
+
+                $.ajax({
+                    type : 'get',
+                    url : 'http://127.0.0.1:3000/api/getcategorybyid',
+                    data : {categoryid : categoryId},
+                    dataType : 'json',
+                    success : function (data) {
+                        var html = template( 'm_title', data );
+                        $('.nav>h3>i').html( html );
+                    }
+                })
+            }
+        })
+
+        /*获取图片详情*/
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getproduct',
+            data : {productid : seid},
+            dataType : 'json',
+            success : function (result) {
+                var html = template( 'info_neil', result );
+                $('.info_neil').html( html );
+            }
+        })
+        /*获取价格表*/
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getproduct',
+            data : {productid : seid},
+            dataType : 'json',
+            success : function (result) {
+                var html = template( 'pricing', result );
+                $('.pricing').html( html );
+            }
+        })
+        /*获取评论*/
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getproductcom',
+            data : {productid : seid},
+            dataType : 'json',
+            success : function (result) {
+                var html = template( 'appraise', result );
+                $('.appraise').html( html );
+            }
+        })
+
+    })
+</script>
+</html>

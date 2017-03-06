@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>brandTitle 第14页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/brandTitle.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="mmm_header">
+    <img class="header_logo" src="images/header_logo.png" alt="">
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--顶部搜索栏-->
+<div class="mmm_search">
+    <input class="ms_txt" type="text" placeholder="请输入你想比价的商品">
+    <input class="ms_btn" type="button" value="搜索">
+</div>
+<!--三级菜单栏-->
+<div class="nav clearfix">
+    <h3>
+        <a href='index.html'>首页</a>&nbsp;&gt;&nbsp;
+        <a href='#'>全部分类</a>&nbsp;&gt;&nbsp;
+    </h3>
+</div>
+<!--总标题-->
+<div class="host">
+    <h3>热门品牌排行</h3>
+</div>
+<!--商品分类-->
+<ul class="category"></ul>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script type="text/html" id ="category">
+    {{each result as value}}
+    <li><a href="brand.html?{{value.brandTitleId}}"><h3>{{value.brandTitle}} <i class='san'></i></h3></a></li>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getbrandtitle',
+            dataType : 'json',
+            success : function (result) {
+                var html = template( 'category', result );
+                $('.category').html( html );
+            }
+        })
+    })
+
+</script>
+</html>

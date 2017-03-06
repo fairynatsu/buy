@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gsproduct 第12页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/gsproduct.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <a href="index.html" class='san'></a>
+    <h3>凑单品</h3>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--下拉栏-->
+<div class="dropdown">
+    <button class='shop' type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class='jd'>京东</span>
+        <span class="caret"></span>
+    </button>
+    <ul id="shop" class="dropdown-menu" aria-labelledby="dLabel"></ul>
+    <button class='area' type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class='north'>华北</span>
+        <span class="caret"></span>
+    </button>
+    <button>全部价格<span class="caret"></span></button>
+</div>
+<a class='search' href="#"><img src="images/search.png" alt=""></a>
+<div class="good-list">
+
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/template.js"></script>
+<script type='text/html' id='dropdown-menu1'>
+    {{each result as value}}
+        <li>{{value.shopName}}</li>
+    {{/each}}
+</script>
+<script type='text/html' id='dropdown-menu2'>
+    {{each result as value}}
+        <li>{{value.areaName}}</li>
+    {{/each}}
+</script>
+<script type='text/html' id='good-list'>
+    {{each result as value}}
+        <div class="gshop">
+            <img src="{{value.productImg}}" alt="">
+            <span class='tit'>{{value.productName}}</span>
+            <span class='pri'>{{value.productPrice}}</span>
+            <button>去凑单</button>
+        </div>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+
+        var shopid = 0;
+        var areaid = 0;
+        /*var spa = '<span class="fr" style="color:red">✓</span>';*/
+        $('.dropdown>.shop').on('click',function () {
+            $.ajax({
+                type : 'get',
+                url : 'http://127.0.0.1:3000/api/getgsshop',
+                dataType : 'json',
+                success : function (result) {
+                    var html = template( 'dropdown-menu1', result );
+                    $('.dropdown-menu').html(html);
+
+                    $('#shop>li').on('click',function () {
+                        shopid = $(this).index();
+                        var shopName = result.result[shopid].shopName;
+                        $('.jd').text(shopName);
+                        /*$(this).append(spa);*/
+
+                        $.ajax({
+                            type : 'get',
+                            url : 'http://127.0.0.1:3000/api/getgsproduct',
+                            dataType : 'json',
+                            data : {shopid :shopid, areaid :areaid},
+                            success : function (result) {
+                                var html = template( 'good-list', result );
+                                $('.good-list').html(html);
+                            }
+                        })
+                    })
+                }
+            })
+        })
+
+        $('.dropdown>.area').on('click',function () {
+            $.ajax({
+                type : 'get',
+                url : 'http://127.0.0.1:3000/api/getgsshoparea',
+                dataType : 'json',
+                success : function (result) {
+                    var html = template( 'dropdown-menu2', result );
+                    $('.dropdown-menu').html(html);
+
+                    $('#shop>li').on('click',function () {
+                        areaid = $(this).index();
+                        var areaName = result.result[areaid].areaName;
+                        $('.north').text(areaName);
+                        /*$(this).append(spa);*/
+
+                        $.ajax({
+                            type : 'get',
+                            url : 'http://127.0.0.1:3000/api/getgsproduct',
+                            dataType : 'json',
+                            data : {shopid :shopid, areaid :areaid},
+                            success : function (result) {
+                                var html = template( 'good-list', result );
+                                $('.good-list').html(html);
+                            }
+                        })
+                    })
+                }
+            })
+        })
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getgsproduct',
+            dataType : 'json',
+            data : {shopid :shopid, areaid :areaid},
+            success : function (result) {
+                var html = template( 'good-list', result );
+                $('.good-list').html(html);
+            }
+        })
+
+    })
+</script>
+</html>

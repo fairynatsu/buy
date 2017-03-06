@@ -1,0 +1,301 @@
+/*
+!*三级菜单*!
+.nav{
+    background-color: #F0F0F0;
+}
+.nav h3{
+    text-decoration: none;
+    font: 14px 'Microsoft Yahei';
+    line-height: 50px;
+    text-indent: 14px;
+    float: left;
+}
+.nav h3 i{
+    display: inline-block;
+    font-style: normal;
+}
+.nav .n_btn{
+    float: right;
+    color: #000;
+    font: 14px 'Microsoft Yahei';
+    background-color: #E1E1E1;
+    width: 50px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+!*商品详情*!
+.info_neil{
+    text-align: center;
+    position: relative;
+}
+.info_neil h1{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.info_neil i{
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+.info_neil .collect{
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #96D700;
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+!*操作栏*!
+.actionBar li{
+    width: 33%;
+    line-height: 40px;
+    text-align: center;
+    list-style: none;
+    float: left;
+    border: 1px solid #D8936C;
+    border-left: none;
+    background-color: #FFC72B;
+    margin-bottom: 10px;
+}
+.actionBar li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+}
+.actionBar li:nth-child(3){
+    border-right: none;
+}
+.actionBar li:nth-child(1){
+    background-color: #FF9F21;
+}
+!*购买*!
+.pricing table{
+    font-size: 18px;
+}
+.pricing table .red{
+    color: #D02444;
+}
+.promise{
+    border-top: 1px solid #C3C3C3;
+    padding: 5px 0;
+}
+!*评价*!
+.appraise{
+    border-top: 1px solid #D4D4D4;
+}
+.appraise .title{
+    padding: 5px 0;
+}
+.appraise h3{
+    text-align: center;
+    background-color: #DBDBDB;
+    border-top: 2px solid #717171;
+    font-size: 16px;
+    line-height: 40px;
+}
+.appraise .date,.from{
+    float: right;
+}
+.appraise p{
+    border-bottom: 1px solid #D4D4D4;
+}
+.smor{
+    width: 96%;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+}*/
+@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+    html,body {
+        font-size:33.75px;
+    }
+}
+@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
+    html,body {
+        font-size:30px;
+    }
+}
+@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
+    html,body {
+        font-size:25px;
+    }
+}
+@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+    html,body {
+        font-size:22.5px;
+    }
+}
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+    html,body {
+        font-size:20px;
+    }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+    html,body {
+        font-size:18.75px;
+    }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+    html,body {
+        font-size:16.875px;
+    }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+    html,body {
+        font-size:15px;
+    }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+    html,body {
+        font-size:12.9375px;
+    }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+    html,body {
+        font-size:12.5px;
+    }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+    html,body {
+        font-size:11.71875px;
+    }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+    html,body {
+        font-size:11.25px;
+    }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+    html,body {
+        font-size:10px;
+    }
+}
+@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+    html,body {
+        font-size:7.5px;
+    }
+}
+/*三级菜单*/
+
+/*三级菜单栏*/
+.nav{
+    background-color: #F0F0F0;
+}
+.nav h3{
+    text-decoration: none;
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+    text-indent: 0.7rem;
+    float: left;
+}
+.nav h3 a{
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+}
+.nav .n_btn{
+    float: right;
+    color: #000;
+    font: 1.4rem 'Microsoft Yahei';
+    background-color: #E1E1E1;
+    width: 5rem;
+    height: 2.5rem;
+    margin-top: 0.3rem;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+}
+/*商品详情*/
+.info_neil{
+    text-align: center;
+    position: relative;
+}
+.info_neil h1{
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+}
+.info_neil i{
+    display: inline-block;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+.info_neil .collect{
+    height: 2.5rem;
+    width: 2.5rem;
+    border: none;
+    border-radius: 50%;
+    background-color: #96D700;
+    color: #fff;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+}
+/*操作栏*/
+.actionBar li{
+    width: 33%;
+    line-height: 2rem;
+    text-align: center;
+    list-style: none;
+    float: left;
+    border: 1px solid #D8936C;
+    border-left: none;
+    background-color: #FFC72B;
+    margin-bottom: 0.5rem;
+}
+.actionBar li a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 0.8rem;
+}
+.actionBar li:nth-child(3){
+    border-right: none;
+}
+.actionBar li:nth-child(1){
+    background-color: #FF9F21;
+}
+/*购买*/
+.pricing table{
+    font-size: 0.9rem;
+}
+.pricing table .red{
+    color: #D02444;
+}
+.promise{
+    font-size: 1rem;
+    border-top: 1.2px solid #C3C3C3;
+    padding: 0.25rem 0;
+}
+/*评价*/
+.appraise{
+    border-top: 1px solid #D4D4D4;
+}
+.appraise .title{
+    padding: 0.25rem 0;
+}
+.appraise h3{
+    text-align: center;
+    background-color: #DBDBDB;
+    border-top: 2px solid #717171;
+    font-size: 0.8rem;
+    line-height: 2rem;
+}
+.appraise .date,.from{
+    float: right;
+}
+.appraise p{
+    border-bottom: 1px solid #D4D4D4;
+    font-size: 1rem;
+}
+.smor{
+    width: 96%;
+    height: 2rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+}

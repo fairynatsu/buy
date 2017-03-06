@@ -1,0 +1,182 @@
+/*
+.category{
+    background-color: #F9F9F9;
+    width: 100%;
+}
+.category>li{
+    width: 100%;
+    background-color: #EDEDED;
+}
+.category>li h3{
+    color: #050005;
+    height: 38px;
+    border-bottom: 1px solid #DADADA;
+    font:  normal 16px 'Microsoft YaHei';
+    text-indent: 10px;
+    padding-top: 12px;
+}
+.category>li h3 .san{
+    float: right;
+    margin-right: 10px;
+    position: relative;
+}
+.category>li h3 .san::before{
+    content: '';
+    border: 8px solid #ccc;
+    border-color: #373D41 transparent transparent transparent;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+}
+.category>li h3 .san::after{
+    content: '';
+    border: 8px solid #ccc;
+    border-color: #f3f3f3 transparent transparent transparent;
+    position: absolute;
+    right: 5px;
+    top: 11px;
+}
+.category>ul>li{
+    float: left;
+    width: 33%;
+    font: 14px 'microsoft Yahei';
+    border-bottom: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    text-align: center;
+    line-height: 40px;
+}
+.category>ul>li>a{
+    color: #000;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+*/
+
+@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+    html,body {
+        font-size:33.75px;
+    }
+}
+@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
+    html,body {
+        font-size:30px;
+    }
+}
+@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
+    html,body {
+        font-size:25px;
+    }
+}
+@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+    html,body {
+        font-size:22.5px;
+    }
+}
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+    html,body {
+        font-size:20px;
+    }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+    html,body {
+        font-size:18.75px;
+    }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+    html,body {
+        font-size:16.875px;
+    }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+    html,body {
+        font-size:15px;
+    }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+    html,body {
+        font-size:12.9375px;
+    }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+    html,body {
+        font-size:12.5px;
+    }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+    html,body {
+        font-size:11.71875px;
+    }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+    html,body {
+        font-size:11.25px;
+    }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+    html,body {
+        font-size:10px;
+    }
+}
+@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+    html,body {
+        font-size:7.5px;
+    }
+}
+
+.category{
+    background-color: #F9F9F9;
+    width: 100%;
+}
+.category>li{
+    width: 100%;
+    background-color: #EDEDED;
+}
+.category>li h3{
+    color: #050005;
+    height: 3rem;
+    border-bottom: 1px solid #DADADA;
+    font:  normal 1.2rem 'Microsoft YaHei';
+    text-indent: 0.5rem;
+    padding-top: 1.6rem;
+}
+.category>li h3 .san{
+    float: right;
+    margin-right: 0.5rem;
+    position: relative;
+}
+.category>li h3 .san::before{
+    content: '';
+    border: 10px solid #ccc;
+    border-color: #373D41 transparent transparent transparent;
+    position: absolute;
+    right: 0.25rem;
+    top: 0.6rem;
+}
+.category>li h3 .san::after{
+    content: '';
+    border: 10px solid #ccc;
+    border-color: #f3f3f3 transparent transparent transparent;
+    position: absolute;
+    right: 0.25rem;
+    top: 0.5rem;
+}
+.category>ul>li{
+    float: left;
+    width: 33%;
+    font: 1rem 'microsoft Yahei';
+    border-bottom: 1px solid #DADADA;
+    border-right: 1px solid #DADADA;
+    text-align: center;
+    line-height: 3rem;
+}
+.category>ul>li>a{
+    color: #000;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font: 1.2rem 'microsoft Yahei';
+    line-height: 3rem;
+}
+

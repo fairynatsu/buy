@@ -1,0 +1,18 @@
+.navigate{
+    width: 78%;
+    margin: 10px auto;
+}
+.navigate ul li{
+    float: left;
+    margin: 8px;
+}
+.navigate ul li a{
+    display: block;
+    border: 1px solid #E2E2E2;
+    background-color: #F4F4F4;
+    padding: 10px;
+    font-size: 16px;
+}
+.navigate ul li a img{
+    vertical-align: bottom;
+}

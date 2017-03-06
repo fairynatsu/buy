@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sitenav 第13页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sitenav.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <a href="index.html" class='san'></a>
+    <h1>商场导航</h1>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--商场导航-->
+<div class="navigate clearfix">
+    <ul></ul>
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/template.js"></script>
+<script type="text/html" id ="navigate">
+    {{each result as value}}
+        <li>
+            <a href="{{value.navHref}}">
+                <img src="{{value.navImg}}" alt="">
+                {{value.navTitle}}
+            </a>
+        </li>
+    {{/each}}
+</script>
+<script>
+    $.ajax({
+        type : 'get',
+        url : 'http://127.0.0.1:3000/api/getsitenav',
+        dataType : 'json',
+        success : function (result) {
+            var html = template( 'navigate', result );
+            $('.navigate>ul').html( html );
+        }
+    })
+</script>
+</html>

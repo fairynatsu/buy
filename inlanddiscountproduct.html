@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inlanddiscountproduct 第8页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/moneyctrlproduct.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <div><a href="inlanddiscount.html" class='san'></a></div>
+    <h1>国内折扣</h1>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--标题栏-->
+<div class="pro_title">
+    <h2></h2>
+    <p></p>
+</div>
+<!--详情信息-->
+<div class="pro_detail clearfix">
+    <i></i>
+    <p></p>
+</div>
+<!--供货地址-->
+<div class="supply">
+    <button>前往购买</button>
+</div>
+<!--二维码下载-->
+<div class="ewm">
+    <img src="images/mmbweixin2.png" alt="">
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script>
+    $(function () {
+        var sel = location.search;
+        var seid = +sel.slice(1);
+
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getinlanddiscountproduct',
+            dataType : 'json',
+            data : {productid : seid},
+            success : function (result) {
+
+                var title = result.result[0].productName,
+                    date = result.result[0].productFrom+'nbsp;'+result.result[0].productTime+'nbsp;'+result.result[0].productTips,
+                    simg = result.result[0].productImgLg,
+                    info = result.result[0].productInfo+'<br/><br/>'+result.result[0].productInfo1,
+                    bimg = result.result[0].productImgLg,
+                    city = result.result[0].productCity,
+                    comment = result.result[0].productComment;
+
+                $('.pro_title>h2').html(title);
+                $('.pro_title>p').html(date);
+                $('.pro_detail>i').html(simg);
+                $('.pro_detail>p').html(info);
+                $('.pro_detail>p').after(bimg);
+                $('.supply>button').before(city);
+                $('.ewm').after(comment);
+
+            }
+        })
+    })
+</script>
+</html>

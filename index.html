@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="mmm_header">
+    <img class="header_logo" src="images/header_logo.png" alt="">
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--顶部搜索栏-->
+<div class="mmm_search">
+    <input class="ms_txt" type="text" placeholder="请输入你想比价的商品">
+    <input class="ms_btn" type="button" value="搜索">
+</div>
+<!--首页菜单栏-->
+<div class="mmm_menu clearfix">
+    <ul class="nav clearfix"></ul>
+</div>
+<!--超值折扣推荐-->
+<div class="mmm_show">
+    <!--头部-->
+    <div class="msh_header">
+        <span>超值折扣推荐</span>
+        <img src="images/more.png" alt="">
+    </div>
+    <!--商品页-->
+    <div class="goods clearfix"></div>
+</div>
+<!--优惠信息-->
+<div class="m_offer">
+    <input type="button" class="offer" value="更多优惠信息&gt;&gt;">
+</div>
+<!--品牌排行-->
+<div class="mmm_show">
+    <!--头部-->
+    <div class="msh_header">
+        <span>品牌排行</span>
+        <img src="images/more.png" alt="">
+    </div>
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script src="js/index.js"></script>
+<!--获取首页菜单-->
+<script type="text/html" id ="nav">
+    {{each result as value}}
+        <li>
+            <a href='{{value.titlehref}}'>
+                <i>{{#value.img}}</i>
+                <span>{{value.name}}</span>
+            </a>
+        </li>
+    {{/each}}
+</script>
+<script>
+    $.ajax({
+        type : 'get',
+        url : 'http://127.0.0.1:3000/api/getindexmenu',
+        dataType : 'json',
+        success : function (result) {
+            var html = template( 'nav', result );
+            $('.nav').html( html );
+            $('.nav>li:nth-last-child(-n+4)').hide();
+        }
+    })
+</script>
+<!--获取商品列表-->
+<script type="text/html" id ="goods">
+    {{each result as value}}
+        <a href='#' class="info_box">
+            <div class='info_img'>
+                <i>{{#value.productImg2}}</i>
+            </div>
+            <div class="mg_txt">
+                <p>{{value.productName}}</p>
+                <span class="price">{{value.productPinkage}}</span><br>
+                <span class="time">{{value.productFrom}}|{{value.productTime}}</span>
+            </div>
+        </a>
+    {{/each}}
+</script>
+<script>
+    $.ajax({
+        type : 'get',
+        url : 'http://127.0.0.1:3000/api/getmoneyctrl',
+        dataType : 'json',
+        success : function (result) {
+            var html = template( 'goods', result );
+            $('.goods').html( html );
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>inlanddiscount 第7页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/inlanddiscount.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <a href="index.html" class='san'></a>
+    <h1>国内折扣</h1>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--瀑布流加载-->
+<div class="in_list clearfix">
+    <ul></ul>
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script type='text/html' id='in_list'>
+    {{if result}}
+        {{each result as value}}
+            <li>
+                <a href="inlanddiscountproduct.html?{{value.productId}}">
+                    <i>{{#value.productImg}}</i>
+                    <h3>{{value.productName}}</h3>
+                    <p class='price'>{{value.productPrice}}</p>
+                    <p>{{value.productFrom}}|{{value.productTime}}</p>
+                </a>
+            </li>
+        {{/each}}
+    {{/if}}
+</script>
+<script>
+    $(function () {
+        /*自定义容器*/
+        var discount = {
+            'result' : []
+        }
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getinlanddiscount',
+            dataType : 'json',
+            success : function (result) {
+                for(var i = 0; i < 4; i++){
+                    /*一次加载4个 传入自定义容器*/
+                    discount.result.push(result.result[i]);
+                }
+                var html = template( 'in_list', discount );
+                /*将自定义容器的内容加载到页面*/
+                $('.in_list>ul').html( html );
+
+                /*可视高度*/
+                var clientHeight = window.innerHeight || document.documentElement.clientHeight ||document.body.clientHeight || 0;
+                /*添加页面滚动监听事件*/
+                window.addEventListener('scroll',function () {
+                    /*页面卷去高度*/
+                    var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+                    /*页面卷去高度加页面可视高度等于页面上所有元素的高度时*/
+                    if((clientHeight + scrollTop) == $(document).height() && discount.result.length < result.result.length){
+                        for(var i = 0; i < 4; i++){
+                            /*继续添加内容到自定义容器  一次4个*/
+                            discount.result.push(result.result[discount.result.length]);
+                        }
+                        var html = template( 'in_list', discount );
+                        $('.in_list>ul').html( html );
+                    }
+                })
+            }
+        })
+    })
+</script>
+</html>

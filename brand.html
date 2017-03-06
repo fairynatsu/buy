@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>brand 第15页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/brand.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="mmm_header">
+    <img class="header_logo" src="images/header_logo.png" alt="">
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--顶部搜索栏-->
+<div class="mmm_search">
+    <input class="ms_txt" type="text" placeholder="请输入你想比价的商品">
+    <input class="ms_btn" type="button" value="搜索">
+</div>
+<!--三级菜单栏-->
+<div class="nav clearfix">
+    <h3>
+        <a href='index.html'>首页</a>&nbsp;&gt;&nbsp;
+        <a href='brandTitle.html'>全部分类</a>&nbsp;&gt;&nbsp;
+    </h3>
+</div>
+<!--总标题1-->
+<div class="host">
+    <h3></h3>
+</div>
+<!--商品分类-->
+<ul class="category"></ul>
+<!--总标题2-->
+<div class="host">
+    <h3 class='rank'></h3>
+</div>
+<!--商品列表-->
+<div class="goodList clearfix"></div>
+<!--总标题3-->
+<div class="host">
+    <h3 class='discr'></h3>
+</div>
+<!--最新评论-->
+<div class="com clearfix"></div>
+<div class="dir"></div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<script type="text/html" id ="category">
+    {{each result as value i}}
+        <li>
+            <a href="#" class='clearfix'>
+                <span class='rank'>{{i + 1}}</span>
+                <h3>{{value.brandName}}</h3>
+                <p>{{value.brandInfo}}</p>
+                <i> > </i>
+            </a>
+        </li>
+    {{/each}}
+</script>
+<script type="text/html" id ="goodList">
+    {{each result as value}}
+        <a href='#' class="info_box">
+            <div class='mon_img'>
+                <i>{{#value.productImg}}</i>
+            </div>
+            <div class="mon_txt">
+                <p>{{value.productName}}</p>
+                <span class="price">{{value.productPrice}}</span><br>
+                <span class="comment">{{value.productQuote}}|{{value.productCom}}</span>
+                <span class='star'>★★★★★</span>
+            </div>
+        </a>
+    {{/each}}
+</script>
+<script type="text/html" id ="com">
+    {{each result as value}}
+        <div>
+            <div class='mon_img'>
+                <i>{{#value.productImg}}</i>
+            </div>
+            <div class="mon_txt">
+                <p>{{value.productName}}</p>
+            </div>
+        </div>
+    {{/each}}
+</script>
+<script type="text/html" id ="dir">
+    {{each result as value}}
+        <div>
+            <span>{{value.comName}}:</span><span class='star'>★★★★★</span><span class='time'>{{value.comTime}}</span>
+            <p>{{value.comContent}}</p>
+        </div>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+
+        var sel = location.search;
+        var seid = +sel.slice(1);
+
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getbrandtitle',
+            dataType : 'json',
+            success : function (result) {
+                var tit = result.result[seid].brandTitle;
+                tit = tit.replace('十大品牌','');
+                $('.host>h3').text(tit+'哪个牌子好');
+                $('.host>.rank').text(tit+'产品销量排行');
+                $('.host>.discr').text(tit+'最新评论');
+
+                $.ajax({
+                    type : 'get',
+                    url : 'http://127.0.0.1:3000/api/getbrand',
+                    dataType : 'json',
+                    data : {brandtitleid : seid},
+                    success : function (result) {
+                        var html = template( 'category', result );
+                        $('.category').html( html );
+                    }
+                });
+
+                $.ajax({
+                    type : 'get',
+                    url : 'http://127.0.0.1:3000/api/getbrandproductlist',
+                    dataType : 'json',
+                    data : {brandtitleid : seid , pagesize : 4},
+                    success : function (result) {
+                        var html = template( 'goodList', result );
+                        $('.goodList').html( html );
+                    }
+                });
+
+                $.ajax({
+                    type : 'get',
+                    url : 'http://127.0.0.1:3000/api/getbrandproductlist',
+                    dataType : 'json',
+                    data : {brandtitleid : seid , pagesize : 1},
+                    success : function (result) {
+                        var html = template( 'com', result );
+                        $('.com').html( html );
+
+                        $.ajax({
+                            type : 'get',
+                            url : 'http://127.0.0.1:3000/api/getproductcom',
+                            dataType : 'json',
+                            data : {productid  : seid},
+                            success : function (result) {
+                                var html = template( 'dir', result );
+                                $('.dir').html( html );
+
+                            }
+                        })
+                    }
+                })
+            }
+        })
+
+
+
+
+    })
+
+</script>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>moneyctrl 第5页</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/moneyctrl.css">
+</head>
+<body>
+<!--顶部通栏-->
+<div class="header clearfix">
+    <a href="index.html" class='san'></a>
+    <h1>省钱控-最新优惠</h1>
+    <img class="header_app" src="images/header_app.png" alt="">
+</div>
+<!--商品列表-->
+<div class="goodList clearfix"></div>
+<!--上下翻页-->
+<div class="mon_page clearfix">
+    <button class='tp_up'>上一页</button>
+    <select id="mon_sel"></select>
+    <button class='tp_down'>下一页</button>
+</div>
+<!--底部栏-->
+<div class="mmm_foot clearfix">
+    <ul>
+        <li>
+            <a href=":;javascript">登录</a>
+        </li>
+        <li>
+            <a href=":;javascript">注册</a>
+        </li>
+        <li>
+            <a href="#">返回顶部</a>
+        </li>
+    </ul>
+    <p><span class="mf_app">手机APP下载</span> <span class="mf_phone">慢慢买手机版</span> --掌上比价平台</p>
+    <p>m.manmanbuy.com</p>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/template.js"></script>
+<!--获取商品列表-->
+<script type="text/html" id ="goodList">
+    {{each result as value}}
+    <a href='moneyctrlproduct.html?{{value.productId}}' class="info_box">
+        <div class='mon_img'>
+            <i>{{#value.productImg2}}</i>
+        </div>
+        <div class="mon_txt">
+            <p>{{value.productName}}</p>
+            <span class="price">{{value.productPinkage}}</span><br>
+            <span class="comment">{{value.productFrom}}|{{value.productTime}}</span>
+        </div>
+    </a>
+    {{/each}}
+</script>
+<script>
+    $(function () {
+        /*定义变量 接收页标*/
+        var pageid = 0;
+        /*获取商品详情*/
+        $.ajax({
+            type: 'get',
+            url: 'http://127.0.0.1:3000/api/getmoneyctrl',
+            dataType: 'json',
+            data : {pageid : pageid},
+            success: function (result) {
+                var html = template('goodList', result);
+                $('.goodList').html(html);
+            }
+        })
+        /*获取翻页下标*/
+        $.ajax({
+            type : 'get',
+            url : 'http://127.0.0.1:3000/api/getmoneyctrl',
+            data : {pageid : pageid},
+            dataType : 'json',
+            success : function (result) {
+                /*获取总页数*/
+                var pages = Math.ceil(result.totalCount/result.pagesize);
+                var options = '';
+                for(var i = 0; i < pages; i++){
+                    /*遍历页数 拼接option标签*/
+                    options += '<option value='+(i+1) +'>'+ (i+1)+'/'+ pages+'</option>';
+                }
+                /*将拼接好的option标签添加到select*/
+                $('#mon_sel').html(options);
+                /*下一页*/
+                $('.tp_down').on('click' , function () {
+                    if(pageid < pages - 1){
+                        pageid ++;
+                        $('option')[pageid].selected = true;
+                        $.ajax({
+                            type : 'get',
+                            url : 'http://127.0.0.1:3000/api/getmoneyctrl',
+                            data : {pageid : pageid},
+                            dataType : 'json',
+                            success : function (result) {
+                                var html = template('goodList',result);
+                                $('.goodList').html(html);
+                            }
+                        })
+                    }else{
+                        pageid = pages-1;
+                    }
+                })
+                /*上一页*/
+                $('.tp_up').on('click' , function () {
+                    if(pageid > 0){
+                        pageid --;
+                        $('option')[pageid].selected = true;
+                        $.ajax({
+                            type : 'get',
+                            url : 'http://127.0.0.1:3000/api/getmoneyctrl',
+                            data : {pageid : pageid},
+                            dataType : 'json',
+                            success : function (result) {
+                                var html = template('goodList',result);
+                                $('.goodList').html(html);
+                            }
+                        })
+                    }else{
+                        pageid = 0;
+                    }
+                })
+                /*select*/
+                $('#mon_sel')[0].onchange = function () {
+                    var sindex = $('#mon_sel>option:selected').val() - 1;
+                    $.ajax({
+                        type: 'get',
+                        url : 'http://127.0.0.1:3000/api/getmoneyctrl',
+                        data : {pageid : sindex},
+                        dataType: 'json',
+                        success: function (result) {
+                            var html = template('goodList', result);
+                            $('.goodList').html(html);
+                            pageid = sindex;
+                        }
+                    })
+                }
+            }
+        })
+        /*function ajax(t) {
+            $.ajax({
+                url:'http://192.168.23.28:3000/api/getproductlist',
+                data:{'categoryid':num,'pageid': t},
+                success: function (data) {
+                    var html = template('big',data);
+                    $('#good').html(html);
+                }
+            });
+        }*/
+    })
+</script>
+</html>

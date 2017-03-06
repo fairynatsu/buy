@@ -1,0 +1,69 @@
+/*三级菜单栏*/
+.nav{
+    background-color: #F7F7F7;
+    margin: 10px 0;
+    border: 1px solid #F0F0F0;
+}
+.nav h3{
+    text-decoration: none;
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+    text-indent: 0.7rem;
+    float: left;
+}
+.nav h3 a{
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+}
+/*总标题*/
+.host{
+    width: 99%;
+    line-height: 30px;
+    text-indent: 1rem;
+    font-size: 14px;
+    color: #935A20;
+    border: 1px solid #DDDDDD;
+    margin: 10px 0 ;
+    background-color: #EEEEEE;
+}
+/*商品分类*/
+.category{
+    background-color: #F9F9F9;
+    width: 100%;
+}
+.category>li{
+    width: 100%;
+    background-color: #EDEDED;
+}
+.category>li a{
+    display: block;
+}
+.category>li h3{
+    color: #050005;
+    height: 38px;
+    border-bottom: 1px solid #DADADA;
+    font:  normal 16px 'Microsoft YaHei';
+    text-indent: 10px;
+    padding-top: 12px;
+}
+.category>li h3 .san{
+    float: right;
+    margin-right: 10px;
+    position: relative;
+}
+.category>li h3 .san::before{
+    content: '';
+    border: 8px solid #ccc;
+    border-color: #373D41 transparent transparent transparent;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+}
+.category>li h3 .san::after{
+    content: '';
+    border: 8px solid #ccc;
+    border-color: #f3f3f3 transparent transparent transparent;
+    position: absolute;
+    right: 5px;
+    top: 11px;
+}

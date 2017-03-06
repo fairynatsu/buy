@@ -1,0 +1,237 @@
+/*
+!*三级菜单栏*!
+.nav{
+    background-color: #F0F0F0;
+}
+.nav h3{
+    text-decoration: none;
+    font: 14px 'Microsoft Yahei';
+    line-height: 50px;
+    text-indent: 14px;
+    float: left;
+}
+.nav .n_btn{
+    float: right;
+    color: #000;
+    font: 14px 'Microsoft Yahei';
+    background-color: #E1E1E1;
+    width: 50px;
+    height: 30px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+!*商品列表*!
+.tele_info{
+    padding: 10px;
+    font: 16px 'Microsoft YaHei';
+    border-bottom: 1px solid #f1f1f1;
+}
+.tele_info a{
+    display: block;
+    border-bottom: 1px solid #f1f1f1;
+}
+.tele_info .tele_list{
+    width: 90px;
+    height: 100px;
+    float: left;
+}
+.tele_info img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.tele_info .tele_txt{
+    overflow: hidden;
+    padding: 0 10px;
+}
+.tele_txt p{
+    color: #333;
+}
+.tele_txt .price{
+    color: #EF6542;
+}
+.tele_txt .comment{
+    display: inline-block;
+    margin-top: 20px;
+    color: #C5AFA3;
+    font-size: 14px;
+}
+!*上下翻页*!
+.tel_page{
+    text-align: center;
+}
+.tel_page button{
+    width: 60px;
+    height: 30px;
+    margin: 5px 0;
+}
+.tel_page .tp_up{
+    float: left;
+    margin-left: 30px;
+}
+.tel_page .tp_down{
+    float: right;
+    margin-right: 30px;
+}
+.tel_page select{
+    width: 80px;
+    height: 30px;
+    margin: 5px 0;
+}*/
+
+@media only screen and (max-width: 1080px), only screen and (max-device-width:1080px) {
+    html,body {
+        font-size:33.75px;
+    }
+}
+@media only screen and (max-width: 960px), only screen and (max-device-width:960px) {
+    html,body {
+        font-size:30px;
+    }
+}
+@media only screen and (max-width: 800px), only screen and (max-device-width:800px) {
+    html,body {
+        font-size:25px;
+    }
+}
+@media only screen and (max-width: 720px), only screen and (max-device-width:720px) {
+    html,body {
+        font-size:22.5px;
+    }
+}
+@media only screen and (max-width: 640px), only screen and (max-device-width:640px) {
+    html,body {
+        font-size:20px;
+    }
+}
+@media only screen and (max-width: 600px), only screen and (max-device-width:600px) {
+    html,body {
+        font-size:18.75px;
+    }
+}
+@media only screen and (max-width: 540px), only screen and (max-device-width:540px) {
+    html,body {
+        font-size:16.875px;
+    }
+}
+@media only screen and (max-width: 480px), only screen and (max-device-width:480px) {
+    html,body {
+        font-size:15px;
+    }
+}
+@media only screen and (max-width: 414px), only screen and (max-device-width:414px) {
+    html,body {
+        font-size:12.9375px;
+    }
+}
+@media only screen and (max-width: 400px), only screen and (max-device-width:400px) {
+    html,body {
+        font-size:12.5px;
+    }
+}
+@media only screen and (max-width: 375px), only screen and (max-device-width:375px) {
+    html,body {
+        font-size:11.71875px;
+    }
+}
+@media only screen and (max-width: 360px), only screen and (max-device-width:360px) {
+    html,body {
+        font-size:11.25px;
+    }
+}
+@media only screen and (max-width: 320px), only screen and (max-device-width:320px) {
+    html,body {
+        font-size:10px;
+    }
+}
+@media only screen and (max-width: 240px), only screen and (max-device-width:240px) {
+    html,body {
+        font-size:7.5px;
+    }
+}
+/*三级菜单栏*/
+.nav{
+    background-color: #F0F0F0;
+}
+.nav h3{
+    text-decoration: none;
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+    text-indent: 0.7rem;
+    float: left;
+}
+.nav h3 a{
+    font: 1.4rem 'Microsoft Yahei';
+    line-height: 3rem;
+}
+.nav .n_btn{
+    float: right;
+    color: #000;
+    font: 1.4rem 'Microsoft Yahei';
+    background-color: #E1E1E1;
+    width: 5rem;
+    height: 2.5rem;
+    margin-top: 0.3rem;
+    margin-right: 0.5rem;
+    border-radius: 5px;
+}
+/*商品列表*/
+.tele_info{
+    padding: 0.5rem;
+    border-bottom: 1px solid #f1f1f1;
+}
+.tele_info a{
+    display: block;
+    font: 1.2rem 'Microsoft YaHei';
+    border-bottom: 1px solid #f1f1f1;
+}
+.tele_info a .tele_list{
+    width: 4.8rem;
+    height: 5.2rem;
+    float: left;
+    margin-top: 2rem;
+}
+.tele_info img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.tele_info .tele_txt{
+    overflow: hidden;
+    padding: 1rem 1rem 0;
+}
+.tele_txt p{
+    color: #333;
+}
+.tele_txt .price{
+    color: #EF6542;
+}
+a .tele_txt .comment{
+    display: inline-block;
+    margin-top: 1.2rem;
+    color: #DEDEDE;
+    font-size: 1rem;
+}
+/*上下翻页*/
+.tel_page{
+    text-align: center;
+}
+.tel_page button{
+    width: 5rem;
+    height: 1.8rem;
+    margin: 0.25rem 0;
+}
+.tel_page .tp_up{
+    float: left;
+    margin-left: 1.5rem;
+}
+.tel_page .tp_down{
+    float: right;
+    margin-right: 1.5rem;
+}
+.tel_page select{
+    width: 5rem;
+    height: 1.8rem;
+    margin: 0.25rem 0;
+}
