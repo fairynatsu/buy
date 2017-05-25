@@ -105,7 +105,7 @@
 <script>
     $.ajax({
         type : 'get',
-        url : 'http://127.0.0.1:3000/api/getmoneyctrl',
+        url : 'api/getmoneyctrl',
         dataType : 'json',
         success : function (result) {
             var html = template( 'goods', result );
